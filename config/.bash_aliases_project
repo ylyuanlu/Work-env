@@ -1,0 +1,194 @@
+##################################################################
+# Alias setting of MRD8 project
+##################################################################
+
+# Get low configuration source code
+alias dlcode='repo init -u ssh://gerrit@192.168.110.46:22/work/review_site/git/manifest.git -b mrd8-ww43-release -m manifest-full.xml && repo sync && repo start local_branch --all'
+
+# Variable settings of low configuration source code root directory
+WW43_LOW_ROOT_DIR=~/Workspace/Code/mrd8-ww43-low
+
+# Entering Dir settings
+alias lcd='cd ${WW43_LOW_ROOT_DIR}'
+
+alias lscd='cd ${WW43_LOW_ROOT_DIR}/system'
+
+alias lbcd='cd ${WW43_LOW_ROOT_DIR}/build'
+alias lbccd='cd ${WW43_LOW_ROOT_DIR}/build/core'
+
+alias lpcd='cd ${WW43_LOW_ROOT_DIR}/packages'
+alias lpacd='cd ${WW43_LOW_ROOT_DIR}/packages/apps'
+alias lpbcd='cd ${WW43_LOW_ROOT_DIR}/packages/apps/Bluetooth'
+alias lpscd='cd ${WW43_LOW_ROOT_DIR}/packages/apps/Settings'
+
+alias lecd='cd ${WW43_LOW_ROOT_DIR}/external'
+alias lebcd='cd ${WW43_LOW_ROOT_DIR}/external/bluetooth/bluedroid'
+alias lewcd='cd ${WW43_LOW_ROOT_DIR}/external/wpa_supplicant_8'
+alias lehcd='cd ${WW43_LOW_ROOT_DIR}/external/wpa_supplicant_8/hostapd'
+alias lwscd='cd ${WW43_LOW_ROOT_DIR}/external/wpa_supplicant_8/wpa_supplicant'
+
+alias lhcd='cd ${WW43_LOW_ROOT_DIR}/hardware'
+alias lhbcd='cd ${WW43_LOW_ROOT_DIR}/hardware/broadcom/libbt'
+alias lhacd='cd ${WW43_LOW_ROOT_DIR}/hardware/broadcom/libbt/conf/ap6330'
+alias lhhcd='cd ${WW43_LOW_ROOT_DIR}/hardware/libhardware_legacy'
+alias lhwcd='cd ${WW43_LOW_ROOT_DIR}/hardware/libhardware_legacy/wifi'
+alias lhlcd='cd ${WW43_LOW_ROOT_DIR}/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib'
+
+alias lkcd='cd ${WW43_LOW_ROOT_DIR}/linux/kernel'
+alias lkxcd='cd ${WW43_LOW_ROOT_DIR}/linux/kernel/arch/x86'
+alias lkccd='cd ${WW43_LOW_ROOT_DIR}/linux/kernel/arch/x86/configs'
+alias lkdcd='cd ${WW43_LOW_ROOT_DIR}/linux/kernel/arch/x86/platform/intel-mid/device_libs'
+
+alias lmcd='cd ${WW43_LOW_ROOT_DIR}/linux/modules'
+alias lmwcd='cd ${WW43_LOW_ROOT_DIR}/linux/modules/wlan'
+alias lmrcd='cd ${WW43_LOW_ROOT_DIR}/linux/modules/wlan/realtek'
+alias lmbcd='cd ${WW43_LOW_ROOT_DIR}/linux/modules/wlan/broadcom/bcm43xx/'
+
+alias lwicd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8_w'
+alias lwird='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/root'
+alias lwirmcd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/root/lib/modules'
+alias lwiscd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/system'
+alias lwisbcd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/system/bin'
+alias lwiocd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/obj'
+
+alias licd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8'
+alias lircd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8/root'
+alias lirmcd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8/root/lib/modules'
+alias liscd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8/system'
+alias lisbcd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8/system/etc/bluetooth'
+alias lisfcd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8/system/etc/firmware'
+alias liocd='cd ${WW43_LOW_ROOT_DIR}/out/target/product/anzhen4_mrd8/obj'
+
+alias ldcd='cd ${WW43_LOW_ROOT_DIR}/device'
+alias ldicd='cd ${WW43_LOW_ROOT_DIR}/device/intel'
+alias ldbcd='cd ${WW43_LOW_ROOT_DIR}/device/intel/baytrail'
+alias ldccd='cd ${WW43_LOW_ROOT_DIR}/device/intel/common'
+alias ldwcd='cd ${WW43_LOW_ROOT_DIR}/device/intel/common/wifi'
+alias ldbtcd='cd ${WW43_LOW_ROOT_DIR}/device/intel/common/bluetooth'
+
+alias lfbcd='cd ${WW43_LOW_ROOT_DIR}/frameworks/base'
+
+alias lvpcd='cd ${WW43_LOW_ROOT_DIR}/vendor/intel/fw/PRIVATE'
+alias lvbcd='cd ${WW43_LOW_ROOT_DIR}/vendor/intel/fw/PRIVATE/bt/bcm4330f'
+alias lvwcd='cd ${WW43_LOW_ROOT_DIR}/vendor/intel/fw/PRIVATE/wifi_bcm'
+
+# Alias setting of product mrd8 compile
+alias lcmk='lcd && source ${WW43_LOW_ROOT_DIR}/build/envsetup.sh && lunch 20 && cd -'
+alias lewmk='lewcd && bmm 2>&1 | tee ${WW43_LOW_ROOT_DIR}/wpa_supplicant_compile_log.txt && cd -'
+
+alias lamk='lcd && make -j8 2>&1 | tee ${WW43_LOW_ROOT_DIR}/all_compile_log.txt && cd -'
+alias labmk='lcd && make -B -j8 2>&1 | tee ${WW43_LOW_ROOT_DIR}/all_compile_log.txt && cd -'
+alias lbmk='lcd && make bootimage -j8 2>&1 | tee ${WW43_LOW_ROOT_DIR}/bootimage_compile_log.txt && cd -'
+alias lcrmk='lcd && make clean -j8 && cd -'
+
+alias lewmk='lcd && make wpa_supplicant -j8 2>&1 | tee ${WW43_LOW_ROOT_DIR}/wpa_supplicant_compile_log.txt && cd -'
+alias lehmk='lcd && make hostapd -j8 2>&1 | tee ${WW43_LOW_ROOT_DIR}/hostapd_compile_log.txt && cd -'
+alias lehbmk='lcd && make hostapd -B -j8 2>&1 | tee ${WW43_LOW_ROOT_DIR}/hostapd_compile_log.txt && cd -'
+alias lewbmk='lcd && make wpa_supplicant -B -j8 2>&1 | tee ${WW43_LOW_ROOT_DIR}/wpa_supplicant_compile_log.txt && cd -'
+
+alias lalvi='vi ${WW43_LOW_ROOT_DIR}/all_compile_log.txt'
+alias lblvi='vi ${WW43_LOW_ROOT_DIR}/bootimage_compile_log.txt'
+alias lwslvi='vi ${WW43_LOW_ROOT_DIR}/wpa_supplicant_compile_log.txt'
+alias lhlvi='vi ${WW43_LOW_ROOT_DIR}/hostapd_compile_log.txt'
+
+# open some common files
+alias lkcvi='lkccd && vi x86_64_byt_defconfig && cd -'
+alias lkwvi='lkdcd && vi platform_wifi.c && cd -'
+
+##################################################################
+# Aliases setting of mrd8-ww43-high
+##################################################################
+alias dhcode='repo init -u ssh://gerrit@192.168.110.46:22/work/review_site/git/manifest.git -b mrd8-ww43-release-high -m manifest-full.xml && repo sync && repo start local_branch --all'
+
+# Variable settings
+WW43_HIGH_ROOT_DIR=~/Workspace/Code/mrd8-ww43-high
+
+# Entering Dir settings
+alias hcd='cd ${WW43_HIGH_ROOT_DIR}'
+
+alias hscd='cd ${WW43_HIGH_ROOT_DIR}/system'
+
+alias hbcd='cd ${WW43_HIGH_ROOT_DIR}/build'
+alias hbccd='cd ${WW43_HIGH_ROOT_DIR}/build/core'
+
+alias hpcd='cd ${WW43_HIGH_ROOT_DIR}/packages'
+alias hpacd='cd ${WW43_HIGH_ROOT_DIR}/packages/apps'
+alias hpbcd='cd ${WW43_HIGH_ROOT_DIR}/packages/apps/Bluetooth'
+alias hpscd='cd ${WW43_HIGH_ROOT_DIR}/packages/apps/Settings'
+
+alias hecd='cd ${WW43_HIGH_ROOT_DIR}/external'
+alias hebcd='cd ${WW43_HIGH_ROOT_DIR}/external/bluetooth/bluedroid'
+alias hewcd='cd ${WW43_HIGH_ROOT_DIR}/external/wpa_supplicant_8'
+alias hehcd='cd ${WW43_HIGH_ROOT_DIR}/external/wpa_supplicant_8/hostapd'
+alias hwscd='cd ${WW43_HIGH_ROOT_DIR}/external/wpa_supplicant_8/wpa_supplicant'
+
+alias hhcd='cd ${WW43_HIGH_ROOT_DIR}/hardware'
+alias hhbcd='cd ${WW43_HIGH_ROOT_DIR}/hardware/broadcom/libbt'
+alias hhacd='cd ${WW43_HIGH_ROOT_DIR}/hardware/broadcom/libbt/conf/ap6330'
+alias hhhcd='cd ${WW43_HIGH_ROOT_DIR}/hardware/libhardware_legacy'
+alias hhwcd='cd ${WW43_HIGH_ROOT_DIR}/hardware/libhardware_legacy/wifi'
+alias hhlcd='cd ${WW43_HIGH_ROOT_DIR}/hardware/broadcom/wlan/bcmdhd/wpa_supplicant_8_lib'
+
+alias hkcd='cd ${WW43_HIGH_ROOT_DIR}/linux/kernel'
+alias hkxcd='cd ${WW43_HIGH_ROOT_DIR}/linux/kernel/arch/x86'
+alias hkccd='cd ${WW43_HIGH_ROOT_DIR}/linux/kernel/arch/x86/configs'
+alias hkdcd='cd ${WW43_HIGH_ROOT_DIR}/linux/kernel/arch/x86/platform/intel-mid/device_libs'
+
+alias hmcd='cd ${WW43_HIGH_ROOT_DIR}/linux/modules'
+alias hmwcd='cd ${WW43_HIGH_ROOT_DIR}/linux/modules/wlan'
+alias hmrcd='cd ${WW43_HIGH_ROOT_DIR}/linux/modules/wlan/realtek'
+alias hmbcd='cd ${WW43_HIGH_ROOT_DIR}/linux/modules/wlan/broadcom/bcm43xx/'
+
+alias hwicd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8_w'
+alias hwird='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/root'
+alias hwirmcd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/root/lib/modules'
+alias hwiscd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/system'
+alias hwisbcd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/system/bin'
+alias hwiocd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8_w/obj'
+
+alias hicd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8'
+alias hircd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8/root'
+alias hirmcd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8/root/lib/modules'
+alias hiscd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8/system'
+alias hisbcd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8/system/etc/bluetooth'
+alias hisfcd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8/system/etc/firmware'
+alias hiocd='cd ${WW43_HIGH_ROOT_DIR}/out/target/product/anzhen4_mrd8/obj'
+
+alias hdcd='cd ${WW43_HIGH_ROOT_DIR}/device'
+alias hdicd='cd ${WW43_HIGH_ROOT_DIR}/device/intel'
+alias hdbcd='cd ${WW43_HIGH_ROOT_DIR}/device/intel/baytrail'
+alias hdccd='cd ${WW43_HIGH_ROOT_DIR}/device/intel/common'
+alias hdwcd='cd ${WW43_HIGH_ROOT_DIR}/device/intel/common/wifi'
+alias hdbtcd='cd ${WW43_HIGH_ROOT_DIR}/device/intel/common/bluetooth'
+
+alias hfbcd='cd ${WW43_HIGH_ROOT_DIR}/frameworks/base'
+
+alias hvpcd='cd ${WW43_HIGH_ROOT_DIR}/vendor/intel/fw/PRIVATE'
+alias hvbcd='cd ${WW43_HIGH_ROOT_DIR}/vendor/intel/fw/PRIVATE/bt/bcm4330f'
+alias hvwcd='cd ${WW43_HIGH_ROOT_DIR}/vendor/intel/fw/PRIVATE/wifi_bcm'
+
+# Alias setting of product mrd8 compile
+alias hcmk='hcd && source ${WW43_HIGH_ROOT_DIR}/build/envsetup.sh && lunch 20 && cd -'
+alias hewmk='hewcd && bmm 2>&1 | tee ${WW43_HIGH_ROOT_DIR}/wpa_supplicant_compile_log.txt && cd -'
+
+alias hamk='hcd && make -j8 2>&1 | tee ${WW43_HIGH_ROOT_DIR}/all_compile_log.txt && cd -'
+alias habmk='hcd && make -B -j8 2>&1 | tee ${WW43_HIGH_ROOT_DIR}/all_compile_log.txt && cd -'
+alias hbmk='hcd && make bootimage -j8 2>&1 | tee ${WW43_HIGH_ROOT_DIR}/bootimage_compile_log.txt && cd -'
+alias hcrmk='hcd && make clean -j8 && cd -'
+
+alias hewmk='hcd && make wpa_supplicant -j8 2>&1 | tee ${WW43_HIGH_ROOT_DIR}/wpa_supplicant_compile_log.txt && cd -'
+alias hehmk='hcd && make hostapd -j8 2>&1 | tee ${WW43_HIGH_ROOT_DIR}/hostapd_compile_log.txt && cd -'
+alias hehbmk='hcd && make hostapd -B -j8 2>&1 | tee ${WW43_HIGH_ROOT_DIR}/hostapd_compile_log.txt && cd -'
+alias hewbmk='hcd && make wpa_supplicant -B -j8 2>&1 | tee ${WW43_HIGH_ROOT_DIR}/wpa_supplicant_compile_log.txt && cd -'
+
+alias halvi='vi ${WW43_HIGH_ROOT_DIR}/all_compile_log.txt'
+alias hblvi='vi ${WW43_HIGH_ROOT_DIR}/bootimage_compile_log.txt'
+alias hwslvi='vi ${WW43_HIGH_ROOT_DIR}/wpa_supplicant_compile_log.txt'
+alias hhlvi='vi ${WW43_HIGH_ROOT_DIR}/hostapd_compile_log.txt'
+
+# open some common files
+alias hkcvi='hkccd && vi x86_64_byt_defconfig && cd -'
+alias hkwvi='hkdcd && vi platform_wifi.c && cd -'
+
+
+
