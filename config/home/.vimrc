@@ -119,6 +119,7 @@ autocmd FileType python setlocal et sta sw=4 sts=4
 filetype plugin on 
 filetype plugin indent on
 
+""" Taglist plugin
 "禁止自动改变当前Vim窗口的大小 
 let Tlist_Inc_Winwidth=0 
 
@@ -128,16 +129,20 @@ let Tlist_Use_Right_Window=0
 "让当前不被编辑的文件的方法列表自动折叠起来， 这样可以节约一些屏幕空间 
 let Tlist_File_Fold_Auto_Close=1
 
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+
 "映射F3为功能键调出winmanager的文件浏览器 
 "映射双击F3调出Taglist的符号浏览器 
-"let g:winManagerWindowLayout=’FileExplorer|TagList’ “你要是喜欢这种布局可以注释掉这一行 
+let g:winManagerWindowLayout='FileExplorer|TagList' 
+nmap wm :WMToggle<cr>
+
 map <F3> :WMToggle<cr> 
 map <F3><F3> :TlistToggle<cr> 
 
-" 将系统已经生成的tags导入 
-set tags+=~/.vim/systags
 
-" 添加ctags列表
+" 将系统已经生成的tags导入, 添加ctags列表
+set tags+=~/.vim/systags
 source ~/database_code/LIST_TAGS
 set autochdir
 
@@ -219,6 +224,10 @@ endfunc
 " 打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
 
+" supertab
+let g:SuperTabRetainCompletionType=2
+let g:SuperTabDefaultCompletionType="<C-X><C-O>"
+
 " .h switch to .c each other
 map <F11> :A<cr>
 
@@ -244,7 +253,7 @@ autocmd BufReadPost *
   \ endif
 endif
 
-" nerdtree设置
+" nerdtree件件浏览列表设置
 let g:NERDTree_title='NERD Tree'
 let g:winManagerWindowLayout='NERDTree|TagList'
 function! NERDTree_Start()
@@ -253,3 +262,22 @@ endfunction
 function! NERDTree_IsValid()
 	return 1
 endfunction  
+
+""minBuffer set
+let g:miniBufExplMapCTabSwitchBufs = 1
+
+ " Neocomplcache settings
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_enable_underbar_completion = 1
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" Omnicppcomplete settings ( Close the preview window automatically )
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif

@@ -6,6 +6,7 @@ alias la='ls -a'
 alias lla='ls -la'
 alias vd='vimdiff'
 alias vi='vim'
+alias cr='clear'
 
 alias nf='find -name'
 alias sadb='sudo adb'
@@ -42,16 +43,21 @@ alias kcfgmk='make menuconfig'
 # alias setting of cd 
 ##################################################################
 alias bcd='cd ~/bin'
+
 alias vcd='cd ~/.vim'
+alias vpcd='cd ~/.vim/plugin'
+
 alias wcd='cd ~/Workspace'
 alias dcd='cd ~/database_code'
 alias ccd='cd ~/Code'
 alias sshcd='cd ~/.ssh'
 
-alias wscd='cd ~/Workspace/Work-env/scripts'
-alias wwcd='cd ~/Workspace/Work-env'
 alias wccd='cd ~/Workspace/Code'
+alias wicd='cd ~/Workspace/Install-packages'
 alias cgcd='cd ~/Code/gitolite-admin'
+alias wwcd='cd ~/Workspace/Work-env'
+alias wwscd='cd ~/Workspace/Work-env/scripts'
+alias wwccd='cd ~/Workspace/Work-env/config'
 
 ##################################################################
 # Alias setting of writing images

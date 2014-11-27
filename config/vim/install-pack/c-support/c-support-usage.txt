@@ -1,0 +1,9 @@
+在~/.vim/c-support/templates/Templates可以设置版权信息，如作者、信箱、版权归属等，新建.c或.cpp文件 是可以看到，并且列出了使用模板文件位置，可以自己编辑,在c.idoms.templete中修改常用函数模板(如main函数等), 
+/if    插入一般函数
+/im    插入主函数
+/cfu    插入函数头,即函数说明
+/cfr    插入一个frame comment,可以用来写变量说明
+/p<    插入一个include , 并且把光标放在<>中
+/rc    保存并编译
+/rr   运行
+/nr    可以在~/.vim/c-support/codesnippets中编写一些预编译代码或者代码块,通过此命令使用
