@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/local/bin/p4v-2014.2.951414/bin/p4merge $*

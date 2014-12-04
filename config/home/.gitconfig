@@ -8,12 +8,18 @@
 [core]
 	editor = vi
 [alias]
+##############################################
+# add alias settings
+##############################################
 	ad = add 
 	uad = add -u
 	aad = add -A
 	iad = add -i
 	pad = add --patch
 
+##############################################
+# branch alias setings
+##############################################
 	br = branch
 	vbr = branch -v
 	mbr = branch -m
@@ -22,6 +28,9 @@
 	mgbr = branch --merged
 	nmbr = branch --no-merge
 
+##############################################
+# bisect alias setings
+##############################################
 	bs = bisect
 	sbs = bisect start
 	gbs = bisect good
@@ -31,18 +40,30 @@
 	bbco = checkout bisect/bad
 	rbs = bisect reset
 
+##############################################
+# blame alias setings
+##############################################
 	bm = blame
 	lbm = blame -L
 
+##############################################
+# clone alias setings
+##############################################
 	cl = clone
 	bcl = clone --bare
 	mcl = clone --mirror
 
+##############################################
+# checkout alias setings
+##############################################
 	co = checkout
 	bco = checkout -b
 	tco = checkout --track
 	tbco = checkout --track -b
 
+##############################################
+# commit alias setings
+##############################################
 	ci = commit
 	mci = commit -m
 	amci = commit -a -m
@@ -55,31 +76,60 @@
 	ascci = commit --amend -s -C
 	aemci = commit --allow-empty -m
 
+##############################################
+# cherry-pick alias setings
+##############################################
 	cp = cherry-pick
 
+##############################################
+# cat-file alias setings
+##############################################
 	cf = cat-file
 	pcf = cat-file -p
 	tcf = cat-file -t
 
+##############################################
+# diff alias setings
+##############################################
 	df = diff
 	cdf = diff --cached
 	hdf = diff HEAD
 	sdf = diff --stat
 	cdf = diff --check
 
+##############################################
+# descibe alias setings
+##############################################
 	db = describe
+
+##############################################
+# format-patch alias setings
+##############################################
 	fp = format-patch
 
-	fp = format-patch
+##############################################
+# mergtool alias setings
+##############################################
 	mt = mergetool
 
+##############################################
+# fetch alias setings
+##############################################
 	ft = fetch
 	nft = fetch --no-tags
 
+##############################################
+# config alias setings
+##############################################
 	gcfg = config --global
 	egcfg = config --global -e
 	ecfg = config -e
+	lcfg = config --list
+	hcfg = config --help
 
+##############################################
+# log alias setings
+##############################################
 	lg = log
 	glg = log --graph
 	olg = log --oneline
@@ -91,14 +141,25 @@
 	pflg = log --pretty=fuller
 	oglg = log --oneline --graph
 	alg = log --pretty=fuller --graph --raw --decorate
+	flg=  log --pretty=format:"%h - %an, %ar : %s"
+	gflg=  log --pretty=format:"%h - %an, %ar : %s" --graph
 
+##############################################
+# ls-files alias setings
+##############################################
 	lf = ls-files
 	slf = ls-files -s
 
+##############################################
+# ls-remote alias setings
+##############################################
 	lr = ls-remote
 	hlr = ls-remote --heads
 	tlr = ls-remote --tags
 
+##############################################
+# tag alias setings
+##############################################
 	mtag = tag -m
 	atag = tag -a
 	dtag = tag -d
@@ -106,33 +167,57 @@
 	ntag = tag -n1
 	tdb = describe --tags
 
+##############################################
+# merge alias setings
+##############################################
 	mg = merge
 	cmg = merge --continue
 	smg = merge --skip
 	amg = merge --abort
 
+##############################################
+# name-rev alias setings
+##############################################
 	nr = name-rev
 	tnr = name-rev --tags
 
+##############################################
+# rebase alias setings
+##############################################
 	rb = rebase
 	orb = rebase --onto
 	irb = rebase -i
 
+##############################################
+# reset alias setings
+##############################################
 	rst = reset
 	hrst = reset --hard
 	srst = reset --soft
 
+##############################################
+# reflog alias setings
+##############################################
 	rl = reflog
 
+##############################################
+# rev-parse alias setings
+##############################################
 	rp = rev-parse
 	gd = rev-parse --git-dir
 	grd = rev-parse --show-cdup
 	brp = rev-parse --symbolic --branches       
 	trp = rev-parse --symbolic --tags
 
+##############################################
+# rev-list alias setings
+##############################################
 	rls = rev-list
 	orls = rev-list --oneline
 
+##############################################
+# remote alias setings
+##############################################
 	rt = remote
 	art = remote add
 	rrt = remote rm
@@ -141,26 +226,52 @@
 	psurt = remote --push set-url
 	udrt = remote update    
 	rnrt = remote rename
+	srt = remote show
 
+##############################################
+# pull alias setings
+##############################################
 	rpull = pull --rebase
 
+##############################################
+# format-patch am alias setings
+##############################################
+	sfp = format-patch -s
 	ram = am --resolved
 	sam = am --skip
 	aam = am --abort
 
+##############################################
+# status alias setings
+##############################################
 	st = status
 	sst = status -s
 
+##############################################
+# show alias setings
+##############################################
 	sh = show
 	ssh = show --stat      
 
+##############################################
+# show-ref alias setings
+##############################################
 	sr = show-ref
 
-	sfp = format-patch -s
-
+##############################################
+# stash alias setings
+##############################################
 	ss = stash
 	ass = stash apply
 	pss = stash pop
 	piss = stash pop --index
 	lss = stash list
 	css = stash clear
+[merge]
+	tool = extMerge
+[mergetool "extMerge"]
+	cmd = extMerge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+	trustExitCode = false
+[diff]
+	external = extDiff

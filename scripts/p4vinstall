@@ -1,0 +1,3 @@
+#!/bin/bash
+cd ../config/git
+./p4vinstall

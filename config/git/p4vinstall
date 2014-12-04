@@ -1,0 +1,51 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE:  git.sh
+# 
+#         USAGE:  ./git.sh 
+# 
+#   DESCRIPTION: git related config 
+# 
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR: YOUR NAME (), 
+#       COMPANY: 
+#       CREATED: 12/04/2014 12:53:53 PM CST
+#      REVISION:  ---
+#===============================================================================
+
+set -o nounset                              # Treat unset variables as an error
+
+#########################################################################
+# File Name: git.sh
+# Author: yuanlu
+# mail: ylyuanlu@sina.cn
+# Created Time: Thu 04 Dec 2014 12:53:53 PM CST
+#########################################################################
+#!/bin/bash
+
+INSTALL_DIR=`pwd`/install-pack
+
+function install-p4v
+{
+	sudo tar -vxzf $INSTALL_DIR/p4v.tgz -C /usr/local/bin
+	sudo cp $INSTALL_DIR/extMerge $INSTALL_DIR/extDiff /usr/local/bin
+
+	git config --global merge.tool extMerge
+	git config --global mergetool.extMerge.cmd \
+		'extMerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'
+
+	git config --global mergetool.trustExitCode false
+	git config --global diff.external extDiff
+}
+
+function main
+{
+	install-p4v
+}
+
+main
+
