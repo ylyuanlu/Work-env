@@ -31,6 +31,10 @@ INSTALL_DIR=`pwd`/install-pack
 
 function install-p4v
 {
+	###################################################################
+	# p4merge download
+	# Download Path: http://www.perforce.com/downloads/complete_list
+	###################################################################
 	sudo tar -vxzf $INSTALL_DIR/p4v.tgz -C /usr/local/bin
 	sudo cp $INSTALL_DIR/extMerge $INSTALL_DIR/extDiff /usr/local/bin
 

@@ -7,6 +7,7 @@
 	ui = true
 [core]
 	editor = vi
+	autocrlf = input
 [alias]
 ##############################################
 # add alias settings
@@ -16,6 +17,13 @@
 	aad = add -A
 	iad = add -i
 	pad = add --patch
+
+##############################################
+# apply alias setings
+##############################################
+	ap = apply
+	wap =  apply --whitespace=warn <patch>
+	fap =  apply --whitespace=fix <patch>
 
 ##############################################
 # branch alias setings
@@ -77,12 +85,19 @@
 	aemci = commit --allow-empty -m
 
 ##############################################
+# count-objects alias setings
+##############################################
+	co =  count-objects
+	vco =  count-objects -v
+
+##############################################
 # cherry-pick alias setings
 ##############################################
 	cp = cherry-pick
 
 ##############################################
 # cat-file alias setings
+# check git object
 ##############################################
 	cf = cat-file
 	pcf = cat-file -p
@@ -119,6 +134,12 @@
 	nft = fetch --no-tags
 
 ##############################################
+# fsck alias setings
+##############################################
+	fs = fsck
+	ffs = fsck --full
+
+##############################################
 # config alias setings
 ##############################################
 	gcfg = config --global
@@ -137,6 +158,10 @@
 	rlg = log --raw
 	slg = log --stat
 	plg = log -p
+
+	# show fuller commit info including reflg
+	glg = log -g
+
 	polg = log --pretty=oneline
 	pflg = log --pretty=fuller
 	oglg = log --oneline --graph
@@ -214,6 +239,7 @@
 ##############################################
 	rls = rev-list
 	orls = rev-list --oneline
+	aorls = rev-list --objects --all
 
 ##############################################
 # remote alias setings
@@ -267,6 +293,29 @@
 	piss = stash pop --index
 	lss = stash list
 	css = stash clear
+
+##############################################
+# update-ref alias setings
+# update a refenrence file by commit hash-val
+# usage: git update-ref HEAD ...
+##############################################
+	ur = update-ref
+
+##############################################
+# symbolic-ref alias setings
+# show content of a refenrence file
+# usage: git update-ref HEAD
+##############################################
+	sr = symbolic-ref
+
+##############################################
+# verify-pack alias setings
+# show content of a pack file
+# usage: git verify-pack -v .git/packed-refs/*
+##############################################
+	vp = verify-pack
+	vvp = verify-pack -v
+
 [merge]
 	tool = extMerge
 [mergetool "extMerge"]
