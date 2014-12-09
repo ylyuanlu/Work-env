@@ -1,0 +1,79 @@
+#########################################################################
+# File Name: disass.sh
+# Author: yuanlu
+# mail: ylyuanlu@sina.cn
+# Created Time: Tue 09 Dec 2014 12:47:20 PM CST
+#########################################################################
+#!/bin/bash
+
+function install_apktool
+{
+    unzip apktool.zip
+
+    tar jxvf apktool/apktool-install-linux-r05-ibot.tar.bz2 -C apktool
+    tar jxvf apktool/apktool.tar.bz2 -C apktool
+
+    cp apktool/apktool1.5.2/apktool.jar apktool/apktool-install-linux-r05-ibot
+    rm apktool/*.tar.bz2
+
+    if [ "${1}" == "system" ]; then
+        sudo mv apktool /opt
+        echo "export PATH=/opt/apktool/apktool-install-linux-r05-ibot:\$PATH" >> ~/.bashrc
+    else
+        mv apktool ~/.apktool
+        echo "export PATH=~/.apktool/apktool-install-linux-r05-ibot:\$PATH" >> ~/.bashrc
+    fi
+}
+
+function install_jd-gui
+{
+    unzip jd-gui-0.3.3.linux.i686.tar.zip -d jd-gui
+
+    tar zxvf jd-gui/jd-gui-0.3.3.linux.i686.tar.gz -C jd-gui
+    rm jd-gui/jd-gui-0.3.3.linux.i686.tar.gz 
+    
+    if [ "${1}" == "system" ]; then
+        sudo mv jd-gui /opt
+        echo "export PATH=/opt/jd-gui:\$PATH" >> ~/.bashrc
+    else
+        mv jd-gui ~/.jd-gui
+        echo "export PATH=~/.jd-gui:\$PATH" >> ~/.bashrc
+    fi
+}
+
+function install_dex2jar
+{
+    unzip dex2jar.zip
+
+    if [ "${1}" == "system" ]; then
+        sudo mv dex2jar-0.0.9.15 /opt
+        echo "export PATH=/opt/dex2jar-0.0.9.15:\$PATH" >> ~/.bashrc
+    else
+        mv dex2jar-0.0.9.15 ~/.dex2jar
+        echo "export PATH=~/.dex2jar:\$PATH" >> ~/.bashrc
+    fi
+}
+
+function main
+{
+    if [ "${1}" == "clear" ]; then
+        rm -rf ~/.dex2jar ~/.apktool ~/.jd-gui
+    else
+        # install apktool
+        echo "installing apktool..."
+        install_apktool ${1}
+        echo "installing apktool end"
+
+        # install jd-gui 
+        echo "installing jd-gui..."
+        install_jd-gui ${1}
+        echo "installing jd-gui end"
+
+        # install dex2jar 
+        echo "installing dex2jar..."
+        install_dex2jar${1}
+        echo "installing dex2jar end"
+    fi
+}
+
+main ${1}
