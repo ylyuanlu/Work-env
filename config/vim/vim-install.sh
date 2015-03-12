@@ -167,11 +167,14 @@ function install_vim
 function main
 {
 	echo "vim config starting..."
-	if [ ${install_dest_dir} != "" ]; then
+
+	if [ "${1}" != "" ]; then
 		install_dest_dir=${1}
 	fi
 
+	echo "install vim to ${install_dest_dir}"
 	install_vim 
+
 	echo "vim config end"
 }
 
