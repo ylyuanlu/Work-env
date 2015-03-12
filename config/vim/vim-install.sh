@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CURR_DIR=`pwd`
-PACK_ROOT=$CURR_DIR/install_pack
+PACK_ROOT=$CURR_DIR/install-pack
 HOME_CONF=$CURR_DIR/../home
 
 install_dest_dir=~/.vim
@@ -22,8 +22,10 @@ function install_vim
 #	usage:
 #		:help 
 #################################################################################
-	tar -xvzf $PACK_ROOT/vimcdoc-1.9.0.tar.gz -c ${install_dest_dir}
-	${install_dest_dir}/vimcdoc-1.9.0/vimcdoc.sh -i
+	tar xvzf $PACK_ROOT/vimcdoc-1.9.0.tar.gz -C ${install_dest_dir}
+	cd ${install_dest_dir}/vimcdoc-1.9.0
+	./vimcdoc.sh -i
+	cd -
 
 #################################################################################
 #	Taglist plugin add
@@ -164,8 +166,13 @@ function install_vim
 
 function main
 {
-	install_dest_dir=${1}
+	echo "vim config starting..."
+	if [ ${install_dest_dir} != "" ]; then
+		install_dest_dir=${1}
+	fi
+
 	install_vim 
+	echo "vim config end"
 }
 
 main ${1}
