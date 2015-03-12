@@ -1,0 +1,44 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE:  git.sh
+# 
+#         USAGE:  ./git.sh 
+# 
+#   DESCRIPTION: git related config 
+# 
+#       OPTIONS:  ---
+#  REQUIREMENTS:  ---
+#          BUGS:  ---
+#         NOTES:  ---
+#        AUTHOR: YOUR NAME (), 
+#       COMPANY: 
+#       CREATED: 12/04/2014 12:53:53 PM CST
+#      REVISION:  ---
+#===============================================================================
+
+#set -o nounset                              # Treat unset variables as an error
+
+#########################################################################
+# File Name: git.sh
+# Author: yuanlu
+# mail: ylyuanlu@sina.cn
+# Created Time: Thu 04 Dec 2014 12:53:53 PM CST
+#########################################################################
+#!/bin/bash
+
+INSTALL_DIR=~
+
+function main
+{
+	echo "Installing home . config file..."
+	if [ "$1" != "" ]; then
+		INSTALL_DIR=$1
+	fi
+
+	echo "install dir: ${INSTALL_DIR}"
+	cp .[!.]* ${INSTALL_DIR}
+	echo "home . config file end"
+}
+
+main $1
